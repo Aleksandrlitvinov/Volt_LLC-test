@@ -23,3 +23,17 @@
   flex-grow: 1;
   padding: 10px 0;
 }
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  & > div{
+    width: 80%;
+  }
+
+  & > button {
+    width: 15%;
+  }
+}

@@ -1,1 +1,1 @@
-export {changeTodoTitle} from './todo-slice.ts'
+export {changeTodoTitle, createTaskForTodo} from './todo-slice.ts'
