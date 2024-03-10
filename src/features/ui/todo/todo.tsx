@@ -2,7 +2,7 @@ import {ReactNode, useCallback} from 'react'
 import {Paper} from '@mui/material'
 import s from './todo.module.scss'
 import {changeTodoTitle, createTaskForTodo, RootState} from '@/store'
-import {AddItemForm, EditTitle} from '@/features'
+import {AddItemForm, EditTitle, TasksList} from '@/features'
 import {useAppDispatch, useAppSelector} from '@/hooks'
 
 export const Todo = (): ReactNode => {
@@ -27,7 +27,7 @@ export const Todo = (): ReactNode => {
           <AddItemForm callback={addNewTask} className={s.form} placeholder={'add new task'}/>
         </div>
         <div className={s.tasksList}>
-          TasksList
+          < TasksList filter={'all'} todoTitle={todoTitle}/>
         </div>
         <div>
           FilterTasks

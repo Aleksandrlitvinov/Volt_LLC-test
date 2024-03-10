@@ -5,12 +5,14 @@ type InitialStateType = {
   todoTitle: string
   todoId: string
   tasksList: [] | TaskType[]
+  filterTasks: FilterTasksType
 }
 
 const initialState: InitialStateType = {
   todoTitle: 'First todo',
   todoId: uuidv4(),
   tasksList: [],
+  filterTasks: 'all'
 }
 export const todoSlice = createSlice({
   name: 'todo',
@@ -43,3 +45,4 @@ export type TaskType = {
   taskId: string
   isCompleted: boolean
 }
+export type FilterTasksType = 'current' | 'all' | 'completed'
