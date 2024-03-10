@@ -18,7 +18,7 @@ type GenInputType = InputPropsType & TextFieldProps
 export const Input = forwardRef<HTMLInputElement, GenInputType>((props, ref) => {
   const {error, errorInput, label, onValueChange, placeholder, type, value, ...rest} = props
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     if (onValueChange) {
       onValueChange(e.target.value)
     }
