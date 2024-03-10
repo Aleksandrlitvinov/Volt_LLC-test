@@ -1,0 +1,39 @@
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.taskTitle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #333;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 70px;
+
+  .icon {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    min-height: 20px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.task.isDone > .taskTitle > div > h6 {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

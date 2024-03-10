@@ -1,12 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {v4 as uuidv4} from 'uuid'
 
-type TaskType = {
-  taskTitle: string
-  taskId: string
-  isCompleted: boolean
-}
-
 type InitialStateType = {
   todoTitle: string
   todoId: string
@@ -32,8 +26,20 @@ export const todoSlice = createSlice({
         isCompleted: false
       }
       state.tasksList = [newTask, ...state.tasksList]
+    },
+    updateTodoTask: (state, action: PayloadAction<TaskType>) => {
+      state.tasksList = state.tasksList.map(task => task.taskId === action.payload?.taskId ? { ...action.payload } : task)
+    },
+    removeTodoTask: (state, action: PayloadAction<{id: string}>) => {
+      state.tasksList = state.tasksList.filter(task => task.taskId !== action.payload.id)
     }
   }
 })
-export const {changeTodoTitle, createTaskForTodo} = todoSlice.actions
+export const {changeTodoTitle, createTaskForTodo, updateTodoTask, removeTodoTask} = todoSlice.actions
 export default todoSlice.reducer
+
+export type TaskType = {
+  taskTitle: string
+  taskId: string
+  isCompleted: boolean
+}

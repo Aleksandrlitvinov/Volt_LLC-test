@@ -1,13 +1,13 @@
 import {ReactNode, useCallback} from 'react'
 import {Paper} from '@mui/material'
 import s from './todo.module.scss'
-import {useDispatch, useSelector} from 'react-redux'
 import {changeTodoTitle, createTaskForTodo, RootState} from '@/store'
 import {AddItemForm, EditTitle} from '@/features'
+import {useAppDispatch, useAppSelector} from '@/hooks'
 
 export const Todo = (): ReactNode => {
-  const {todoTitle, todoId} = useSelector((state: RootState) => state.todo)
-  const dispatch = useDispatch()
+  const {todoTitle, todoId} = useAppSelector((state: RootState) => state.todo)
+  const dispatch = useAppDispatch()
   const onChangeTodoTitleHandler = async (newTitle: string, todoId: string): Promise<void> => {
     dispatch(changeTodoTitle({newTitle: newTitle, todoId: todoId}))
   }
