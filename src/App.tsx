@@ -1,10 +1,11 @@
-import {ReactElement} from 'react'
+import {ReactNode} from 'react'
+import {Header} from '@/shared'
 
-const App = (): ReactElement => {
+const App = (): ReactNode => {
 
   return (
     <>
-      <h1>Home page</h1>
+      <Header />
     </>
   )
 }
