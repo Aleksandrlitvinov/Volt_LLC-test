@@ -34,10 +34,13 @@ export const todoSlice = createSlice({
     },
     removeTodoTask: (state, action: PayloadAction<{id: string}>) => {
       state.tasksList = state.tasksList.filter(task => task.taskId !== action.payload.id)
+    },
+    changeFilterType: (state, action: PayloadAction<FilterTasksType>)=> {
+      state.filterTasks = action.payload
     }
   }
 })
-export const {changeTodoTitle, createTaskForTodo, updateTodoTask, removeTodoTask} = todoSlice.actions
+export const {changeTodoTitle, createTaskForTodo, updateTodoTask, removeTodoTask, changeFilterType} = todoSlice.actions
 export default todoSlice.reducer
 
 export type TaskType = {

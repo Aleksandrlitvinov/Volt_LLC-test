@@ -3,7 +3,7 @@ import { memo } from 'react'
 import { Task } from '@/features'
 import { useAppSelector } from '@/hooks'
 import {FilterTasksType, RootState, TaskType} from '@/store'
-import {Typography} from "@mui/material";
+import {Typography} from '@mui/material'
 
 
 
@@ -27,11 +27,16 @@ export const TasksList = memo((props: TasksListProps) => {
 
   return (
     <div>
-      {!tasksWithStatus?.length
-        ? <Typography style={{ textAlign: 'center' }}>
-          Add your first task in {todoTitle}
-        </Typography>
-        : tasksWithStatus?.map((task: TaskType) => <Task {...task} key={task.taskId} />)
+      {
+        !tasks?.length
+          ? <Typography style={{ textAlign: 'center' }}>
+            Add your first task in {todoTitle}
+          </Typography>
+          : !tasksWithStatus?.length
+            ? <Typography style={{ textAlign: 'center' }}>
+                List of '{filter}' tasks is empty!
+            </Typography>
+            : tasksWithStatus?.map((task: TaskType) => <Task {...task} key={task.taskId} />)
       }
     </div>
   )

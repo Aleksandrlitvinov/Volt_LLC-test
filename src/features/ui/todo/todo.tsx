@@ -1,13 +1,14 @@
 import {ReactNode, useCallback} from 'react'
 import {Paper} from '@mui/material'
 import s from './todo.module.scss'
-import {changeTodoTitle, createTaskForTodo, RootState} from '@/store'
-import {AddItemForm, EditTitle, TasksList} from '@/features'
+import {changeFilterType, changeTodoTitle, createTaskForTodo, FilterTasksType, RootState} from '@/store'
+import {AddItemForm, EditTitle, TasksList, FilterTasks} from '@/features'
 import {useAppDispatch, useAppSelector} from '@/hooks'
 
 export const Todo = (): ReactNode => {
-  const {todoTitle, todoId} = useAppSelector((state: RootState) => state.todo)
+  const {todoTitle, todoId, filterTasks} = useAppSelector((state: RootState) => state.todo)
   const dispatch = useAppDispatch()
+
   const onChangeTodoTitleHandler = async (newTitle: string, todoId: string): Promise<void> => {
     dispatch(changeTodoTitle({newTitle: newTitle, todoId: todoId}))
   }
@@ -17,6 +18,12 @@ export const Todo = (): ReactNode => {
     },
     [dispatch, todoId]
   )
+
+  const onClickSetFilterHandler = (value: string): void => {
+    const currentFilter = value.trim()
+
+    dispatch(changeFilterType(currentFilter as FilterTasksType))
+  }
   return (
     <Paper elevation={5} style={{borderRadius: '10px'}} className={s.todo}>
       <div className={s.tasksListWrapper}>
@@ -27,10 +34,10 @@ export const Todo = (): ReactNode => {
           <AddItemForm callback={addNewTask} className={s.form} placeholder={'add new task'}/>
         </div>
         <div className={s.tasksList}>
-          < TasksList filter={'all'} todoTitle={todoTitle}/>
+          < TasksList filter={filterTasks} todoTitle={todoTitle}/>
         </div>
         <div>
-          FilterTasks
+          <FilterTasks filter={filterTasks} onClickSetFilter={onClickSetFilterHandler}/>
         </div>
       </div>
     </Paper>

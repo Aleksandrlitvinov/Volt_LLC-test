@@ -20,3 +20,37 @@ export const stylesBtnTask = createTheme({
     },
   },
 })
+
+export const stylesBtnFilter = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&.active': {
+            backgroundColor: '#b9237e',
+            border: '1px solid #b9237e',
+            borderRadius: '4px',
+            color: 'antiquewhite',
+            padding: '0 10px',
+          },
+          '&.default': {
+            border: '1px solid #b9237e',
+            borderRadius: '4px',
+            fontSize: '14px',
+            padding: '0 10px',
+          },
+          '&:hover': {
+            backgroundColor: '#b9237e',
+            border: '1px solid antiquewhite',
+            outline: 'none',
+            color: 'antiquewhite',
+          },
+          color: '#b9237e',
+
+          padding: '2px',
+          textTransform: 'lowercase',
+        },
+      },
+    },
+  },
+})
