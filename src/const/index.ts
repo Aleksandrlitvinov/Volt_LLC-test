@@ -1,0 +1,1 @@
+export {MAX_LENGTH_OF_TITLE} from './length-of-title.ts'
