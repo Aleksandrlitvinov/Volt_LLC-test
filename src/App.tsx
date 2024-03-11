@@ -16,8 +16,4 @@ const App = (): ReactNode => {
 
 export default App
 
-
-// - A new record is added if its length is less than or equal to N characters.
-
-// - Switching the status of a record Completed / Not completed when clicking on its name.
 // - Display counter of completed and uncompleted tasks.
