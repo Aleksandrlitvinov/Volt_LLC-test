@@ -29,6 +29,15 @@ export const Task = memo((props: TaskType) => {
     [dispatch, task]
   )
 
+  const onChangeTaskStatus = (task: TaskType): void => {
+    const updatedTask = {
+      ...task,
+      isCompleted: !task.isCompleted,
+    }
+
+    dispatch(updateTodoTask(updatedTask))
+  }
+
   const onChangeTaskTitle = useCallback(
     async (newTitle: string) => {
       const updatedTask: TaskType = {
@@ -57,6 +66,8 @@ export const Task = memo((props: TaskType) => {
           itemId={task.taskId}
           itemTitle={task.taskTitle}
           label={'edit'}
+          changeStatus={onChangeTaskStatus}
+          task={task}
         />
       </div>
       <div className={s.icons}>

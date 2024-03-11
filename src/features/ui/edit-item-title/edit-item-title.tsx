@@ -2,15 +2,18 @@ import {ChangeEvent, memo, useCallback, useState} from 'react'
 
 import {Input} from '@/shared'
 import {Tooltip, Typography} from '@mui/material'
+import {TaskType} from '@/store'
 
 type EditTitlePropsType = {
   callback?: (id: string, newTitle: string) => void
   itemId: string
   itemTitle: string
   label?: string
+  changeStatus: (task: TaskType) => void
+  task: TaskType
 }
 export const EditTitle = memo((props: EditTitlePropsType) => {
-  const {callback, itemId, itemTitle, label} = props
+  const {callback, itemId, itemTitle, label, changeStatus, task} = props
   const [inputValue, setInputValue] = useState<string>(itemTitle)
   const [editMode, setEditMode] = useState<boolean>(false)
 
@@ -30,12 +33,12 @@ export const EditTitle = memo((props: EditTitlePropsType) => {
     },
     [callback, itemId]
   )
-
   return (
     <Tooltip placement={'top-start'} title={'double-click to edit'}>
       <div>
         {!editMode
           ? <Typography
+            onClick={()=>changeStatus(task)}
             onDoubleClick={onEditModeHandler}
             style={{userSelect: 'none'}}
             variant={"h6"}

@@ -14,23 +14,29 @@ type AddItemFormPropsType = {
 export const AddItemForm = (props: AddItemFormPropsType): ReactNode => {
   const { callback, className, placeholder } = props
   const [inputValue, setInputValue] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<null | string>(null)
   const [error, setError] = useState<boolean>(false)
 
-  const isValidLength = !inputValue.length || inputValue.length > MAX_LENGTH_OF_TITLE
+  const isValidLength = inputValue.length > MAX_LENGTH_OF_TITLE
 
   const onInputChangeValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setError(false)
+    setErrorMessage(null)
     setInputValue(e.currentTarget.value)
   }, [])
 
-  const onValueChangeHandler = useCallback((todoTitle: string) => {
+  const onValueChangeHandler = useCallback((itemTitle: string) => {
     setError(false)
-    setInputValue(todoTitle)
+    setErrorMessage(null)
+    setInputValue(itemTitle)
   }, [])
+
   const addItem = useCallback(
     (e: React.FormEvent<HTMLFormElement>, itemTitle: string) => {
       e.preventDefault()
       if (itemTitle.trim() === '') {
         setError(true)
+        setErrorMessage('this field can not be empty')
       } else {
         callback(itemTitle)
       }
@@ -50,6 +56,7 @@ export const AddItemForm = (props: AddItemFormPropsType): ReactNode => {
               placeholder={placeholder}
               type={'text'}
               value={inputValue}
+              errorInput={errorMessage}
             />
           </ThemeProvider>
           <div style={{color: '#cc1439', textAlign: 'center', paddingTop: '5px'}}>

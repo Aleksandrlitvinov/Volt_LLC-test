@@ -4,12 +4,24 @@
 
 .errorMessage {
   position: absolute;
-  color: var(--color-danger-500);
+  color: #cc1439;
 }
 
 .label {
   position: absolute;
   top: -25px;
   left: 5px;
-  color: var(--color-dark-300)
+  color: #4c8dff
+}
+
+//.input.error{
+//  color: red;
+//  border: 1px solid red;
+//  border-radius: 4px ;
+//}
+
+.inputWrapper.error{
+  color: #cc1439;
+  //border: 1px solid #cc1439;
+  border-radius: 4px ;
 }

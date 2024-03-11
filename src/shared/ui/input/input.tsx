@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import s from './input.module.scss'
 
 type InputPropsType = {
-  errorInput?: string
+  errorInput: null | string
   label?: string
   onValueChange?: (value: string) => void
   type: 'text'
@@ -23,12 +23,14 @@ export const Input = forwardRef<HTMLInputElement, GenInputType>((props, ref) => 
       onValueChange(e.target.value)
     }
   }
+
   const classNames = {
     input: clsx(s.input, error && s.error),
+    inputWrapper: clsx(s.inputWrapper, error && s.error)
   }
-
+  //todo error
   return (
-    <div className={s.inputWrapper}>
+    <div className={classNames.inputWrapper}>
       {label && <div className={s.label}>{label}</div>}
       <TextField
         className={classNames.input}

@@ -26,8 +26,8 @@ export const stylesAddItemForm = createTheme({
         },
         root: {
           '&.Mui-error fieldset': {
-            border: '2px solid #990f2b',
-            borderColor: '#b9237e !important',
+            border: '2px solid #cc1439',
+            borderColor: '#cc1439 !important',
           },
           '&.Mui-error input': {
             borderWidth: '1px',
