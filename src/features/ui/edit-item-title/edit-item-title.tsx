@@ -9,8 +9,8 @@ type EditTitlePropsType = {
   itemId: string
   itemTitle: string
   label?: string
-  changeStatus: (task: TaskType) => void
-  task: TaskType
+  changeStatus?: (task: TaskType) => void
+  task?: TaskType
 }
 export const EditTitle = memo((props: EditTitlePropsType) => {
   const {callback, itemId, itemTitle, label, changeStatus, task} = props
@@ -33,12 +33,17 @@ export const EditTitle = memo((props: EditTitlePropsType) => {
     },
     [callback, itemId]
   )
+  const onChangeStatus = (): void => {
+    if (changeStatus && task) {
+      changeStatus(task)
+    }
+  }
   return (
     <Tooltip placement={'top-start'} title={'double-click to edit'}>
       <div>
         {!editMode
           ? <Typography
-            onClick={()=>changeStatus(task)}
+            onClick={onChangeStatus}
             onDoubleClick={onEditModeHandler}
             style={{userSelect: 'none'}}
             variant={"h6"}

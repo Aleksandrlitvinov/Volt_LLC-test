@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import s from './input.module.scss'
 
 type InputPropsType = {
-  errorInput: null | string
+  errorInput?: null | string
   label?: string
   onValueChange?: (value: string) => void
   type: 'text'
