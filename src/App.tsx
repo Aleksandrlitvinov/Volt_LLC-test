@@ -15,5 +15,3 @@ const App = (): ReactNode => {
 }
 
 export default App
-
-// - Display counter of completed and uncompleted tasks.

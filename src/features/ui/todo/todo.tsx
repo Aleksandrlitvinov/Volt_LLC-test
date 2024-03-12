@@ -4,6 +4,7 @@ import s from './todo.module.scss'
 import {changeFilterType, changeTodoTitle, createTaskForTodo, FilterTasksType, RootState} from '@/store'
 import {AddItemForm, EditTitle, TasksList, FilterTasks} from '@/features'
 import {useAppDispatch, useAppSelector} from '@/hooks'
+import {TasksCounter} from '@/shared'
 
 export const Todo = (): ReactNode => {
   const {todoTitle, todoId, filterTasks} = useAppSelector((state: RootState) => state.todo)
@@ -30,13 +31,14 @@ export const Todo = (): ReactNode => {
         <div className={s.tasksListTitle}>
           <EditTitle itemId={todoId} itemTitle={todoTitle} callback={onChangeTodoTitleHandler} />
         </div>
+        <TasksCounter />
         <div>
           <AddItemForm callback={addNewTask} className={s.form} placeholder={'add new task'}/>
         </div>
         <div className={s.tasksList}>
           <TasksList filter={filterTasks} todoTitle={todoTitle}/>
         </div>
-        <div>
+        <div className={s.filterTasks}>
           <FilterTasks filter={filterTasks} onClickSetFilter={onClickSetFilterHandler}/>
         </div>
       </div>

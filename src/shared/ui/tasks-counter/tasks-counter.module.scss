@@ -1,0 +1,41 @@
+@mixin count {
+  color: antiquewhite;
+  font-weight: 600;
+  margin-left: 5px;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.counter{
+  display: flex;
+  max-width: 60%;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px auto;
+  padding: 5px;
+  border: 1px solid #d99000;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  .title{
+    color: #5d5b5b;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .completedCount{
+    @include count;
+    background-color: #0f9954;
+  }
+
+  .uncompletedCount{
+    @include count;
+    background-color: #cc1439;
+  }
+}
