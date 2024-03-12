@@ -5,7 +5,6 @@ import {stylesAddItemForm, stylesBtnTask} from '@/styles'
 import AddIcon from '@mui/icons-material/Add'
 import {MAX_LENGTH_OF_TITLE} from '@/const'
 
-
 type AddItemFormPropsType = {
   callback: (todoTitle: string, id?: string) => void
   className: string
